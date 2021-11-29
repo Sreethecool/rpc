@@ -22,12 +22,6 @@ var recValidBlockChainStr = "Received Blockchain address + "
 var errInvalidAddress = "Invalid Blockchain Address"
 var errInvalidRequest = "Invalid Request"
 
-//Returns URL of the addressValidator
-func (a *AddressValidator) Url() string {
-	addr := fmt.Sprintf("%s:%s", a.Address, a.Port)
-	return addr
-}
-
 //It resets state validation flags
 func (a *AddressValidator) reset() {
 	a.handshake = false

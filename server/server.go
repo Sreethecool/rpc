@@ -6,6 +6,7 @@ import (
 	"net"
 	"net/rpc"
 
+	"github.com/Sreethecool/rpc/utils"
 	"github.com/Sreethecool/rpc/validator"
 )
 
@@ -13,7 +14,7 @@ import (
 func RunServer(a validator.AddressValidator) {
 	rpc.Register(&a)
 
-	address, err := net.ResolveTCPAddr("tcp", a.Url())
+	address, err := net.ResolveTCPAddr("tcp", utils.GetURL(a))
 	if err != nil {
 		log.Fatalf("Error :%v", err)
 	}

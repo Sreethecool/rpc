@@ -9,6 +9,7 @@ import (
 	"github.com/Sreethecool/rpc/validator"
 )
 
+//Runserver Initializes RPC server and registers it with addressvalidator struct which is passed as parameter.
 func RunServer(a validator.AddressValidator) {
 	rpc.Register(&a)
 

@@ -2,35 +2,26 @@ package server
 
 import (
 	"fmt"
+	"log"
 	"net"
-	"net/http"
 	"net/rpc"
+
+	"github.com/Sreethecool/rpc/validator"
 )
 
-type AddressValidator struct {
-	port     string
-	shutdown chan bool
-}
+func RunServer(a validator.AddressValidator) {
+	rpc.Register(&a)
 
-func (a *AddressValidator) Send(msg string, reply *string) error {
-	return nil
-}
-
-func (a *AddressValidator) Recieve(msg string, reply *string) error {
-	return nil
-}
-
-func RunServer(a *AddressValidator) {
-	rpc.Register(a)
-	rpc.HandleHTTP()
-
-	fmt.Printf("Listening on port %s...\n", a.port)
-
-	l, err := net.Listen("tcp", a.port)
+	address, err := net.ResolveTCPAddr("tcp", a.Url())
 	if err != nil {
-		fmt.Printf("Can't bind port to listen. %v", err)
-		return
+		log.Fatalf("Error :%v", err)
 	}
 
-	go http.Serve(l, nil)
+	fmt.Printf("Listening on port %s...\n", address.String())
+	conn, err := net.Listen("tcp", address.String())
+	if err != nil {
+		log.Fatalf("Cant listen to address : %s", address.String())
+	}
+
+	go rpc.Accept(conn)
 }

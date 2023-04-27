@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	fmt.Println("RPC Protocols and Exception handling with Custom Errors")
+	fmt.Println("RPC Protocols and Exception handling with Custom Errors..")
 
 	a := validator.AddressValidator{
 		Address: "localhost",

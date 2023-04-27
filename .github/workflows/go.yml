@@ -25,4 +25,4 @@ jobs:
       run: go run main.go
 
     - name: Test
-      run: go test -v ./...
+      run: make test

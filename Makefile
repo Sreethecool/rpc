@@ -2,15 +2,15 @@
 all: build test
  
 build:
- go build main.go
+	go build main.go
  
 test:
- go test -v ./..
+	go test -v ./..
  
 run:
- go build main.go
- ./main
+	go build main.go
+	./main
  
 clean:
- go clean
- rm main
+	go clean
+	rm main

@@ -1,17 +1,16 @@
-BINARY_NAME=assignment
  
 all: build test
  
 build:
-    go build -o ${BINARY_NAME} main.go
+ go build main.go
  
 test:
-    go test -v ./..
+ go test -v ./..
  
 run:
-    go build -o ${BINARY_NAME} main.go
-    ./${BINARY_NAME}
+ go build main.go
+ ./main
  
 clean:
-    go clean
-    rm ${BINARY_NAME}
+ go clean
+ rm main

@@ -23,7 +23,7 @@ func main() {
 
 	reader := bufio.NewReader(os.Stdin)
 	c := client.NewClient(a)
-	fmt.Println("New Client Created...")
+	fmt.Println("New Client Created....")
 	for {
 		reply := ""
 		//Reads the message to be sent via client
